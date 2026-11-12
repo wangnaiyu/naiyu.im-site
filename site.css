@@ -1,0 +1,88 @@
+/*
+  naiyu.im-site — 简版双语作品集（原创样式，系统字体，无外部资源）
+  owner: Claude（Batch D）。临时工作目录 /private/tmp/pyptoux-batch-d/naiyu.im-site/，
+  需持久化时由用户纳入可写 workspace 后整体搬迁，不在相邻目录另存第二份。
+*/
+:root {
+  color-scheme: light;
+  --bg: #fbfbf9;
+  --surface: #ffffff;
+  --surface-2: #f1f1ed;
+  --ink: #141414;
+  --muted: #5d5d58;
+  --faint: #8b8b85;
+  --line: #e2e2dc;
+  --line-strong: #c8c8c1;
+  --accent: #141414;
+  --on-accent: #ffffff;
+  --focus: #5b34e0;
+  --font: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", "Noto Sans CJK SC", sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #101012; --surface: #19191c; --surface-2: #232327; --ink: #ededea; --muted: #a4a49e;
+    --faint: #75756e; --line: #2c2c30; --line-strong: #434349; --accent: #ededea; --on-accent: #141414; --focus: #a891ff;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #101012; --surface: #19191c; --surface-2: #232327; --ink: #ededea; --muted: #a4a49e;
+  --faint: #75756e; --line: #2c2c30; --line-strong: #434349; --accent: #ededea; --on-accent: #141414; --focus: #a891ff;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.7 var(--font); -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.skip-link { position: absolute; left: 12px; top: -48px; padding: 8px 12px; background: var(--ink); color: var(--bg); border-radius: 8px; text-decoration: none; z-index: 5; }
+.skip-link:focus { top: 12px; }
+
+.page { max-width: 860px; margin: 0 auto; padding: 0 24px 80px; }
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 0; }
+.handle { font: 650 15px/1 var(--mono); letter-spacing: .01em; }
+.topbar__actions { display: flex; align-items: center; gap: 6px; }
+.lang { display: inline-flex; border: 1px solid var(--line-strong); border-radius: 999px; overflow: hidden; margin-right: 6px; }
+.lang__btn { border: 0; background: none; padding: 5px 13px; font-size: 13px; color: var(--muted); }
+.lang__btn[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
+.icon-btn { width: 36px; height: 36px; border: 0; background: none; border-radius: 9px; display: inline-grid; place-items: center; padding: 0; color: var(--ink); text-decoration: none; }
+.icon-btn:hover { background: var(--surface-2); }
+.icon-btn svg { width: 19px; height: 19px; }
+
+.hero { padding: 48px 0 8px; }
+.hero h1 { margin: 0; font-size: clamp(34px, 7vw, 52px); line-height: 1.1; letter-spacing: -.01em; }
+.hero p { margin: 14px 0 0; font-size: 18px; color: var(--muted); max-width: 32em; }
+
+.section-title { margin: 56px 0 18px; font-size: 13px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); }
+.projects { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+.project {
+  display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 20px; align-items: start;
+  padding: 18px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface);
+}
+.project__cover { aspect-ratio: 4 / 3; border-radius: 10px; overflow: hidden; background: var(--surface-2); }
+.project__cover svg { display: block; width: 100%; height: 100%; }
+.project__role { font-size: 12px; letter-spacing: .06em; color: var(--faint); margin: 0 0 4px; }
+.project__name { margin: 0; font-size: 19px; line-height: 1.35; }
+.project__desc { margin: 7px 0 0; color: var(--muted); font-size: 15px; }
+.project__links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 6px; padding: 6px 13px; border-radius: 999px;
+  border: 1px solid var(--line-strong); background: var(--surface); font-size: 13.5px; text-decoration: none;
+}
+.btn:hover { background: var(--surface-2); }
+.btn--primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+.btn--primary:hover { opacity: .88; background: var(--accent); }
+.btn svg { width: 13px; height: 13px; }
+.note { font-size: 13px; color: var(--faint); align-self: center; }
+
+@media (max-width: 640px) {
+  .page { padding: 0 16px 56px; }
+  .hero { padding-top: 32px; }
+  .hero p { font-size: 16px; }
+  .project { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .project__cover { max-width: 180px; }
+}
